@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: linear-gradient(to bottom, #050816, #0a101f, #050816);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+@layer components {
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    @apply absolute w-20 h-1 bg-primary-500 left-1/2 -translate-x-1/2 bottom-0 -mb-3 rounded-full;
+  }
+  
+  .btn {
+    @apply px-6 py-3 rounded-lg transition-all duration-300 font-medium;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white shadow-[0_0_15px_rgba(14,165,233,0.3)] hover:shadow-[0_0_25px_rgba(14,165,233,0.5)];
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary-500 text-primary-400 hover:bg-primary-500/10 shadow-[0_0_10px_rgba(14,165,233,0.2)] hover:shadow-[0_0_20px_rgba(14,165,233,0.4)];
+  }
+  
+  .card {
+    @apply bg-space-light/50 backdrop-blur-sm border border-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300;
+  }
+  
+  .nav-link {
+    @apply text-gray-400 hover:text-white transition-colors duration-300 px-3 py-2;
+  }
+  
+  .nav-link.active {
+    @apply text-primary-400;
+  }
+  
+  .social-icon {
+    @apply text-gray-400 hover:text-primary-400 transition-colors duration-300;
+  }
+
+  .glow-text {
+    @apply text-primary-400;
+    text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
